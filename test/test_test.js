@@ -20,6 +20,7 @@ describe('Test', function() {
     expect(trains.routeLength('ADC')).to.be.eql(13);
     expect(trains.routeLength('AEBCD')).to.be.eql(22);
     expect(trains.routeLength('AED')).to.be.eql('NO SUCH ROUTE');
+    expect(trains.routeLength('ACD')).to.be.eql('NO SUCH ROUTE');
   });
 
 

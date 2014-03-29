@@ -42,11 +42,13 @@ module.exports = function (){
       return value;
   }
   
-
   return {
     routeLength: function(route) {
       return computeLength(route);
     },
+    startANDend: function() {
+      return initialize();
+    }
   }
 
 
