@@ -14,12 +14,12 @@ describe('Test', function() {
     trains = new Trains();
   });
 
-  it('needs to successfully set a meeting', function() {
-    console.log(trains.routeLength());
-  });
-
-  it('needs to successfully set a meeting', function() {
-    // console.log(routeLength);
+  it('needs to report the correct route distance', function() {
+    expect(trains.routeLength('ABC')).to.be.eql(9);
+    expect(trains.routeLength('AD')).to.be.eql(5);
+    expect(trains.routeLength('ADC')).to.be.eql(13);
+    expect(trains.routeLength('AEBCD')).to.be.eql(22);
+    expect(trains.routeLength('AED')).to.be.eql('NO SUCH ROUTE');
   });
 
 
