@@ -1,27 +1,18 @@
 'use strict';
-/*jshint unused:false */
-
-// load jquery et all via browserify
 var $        = require('jquery');
-var _        = require('underscore');
-var Backbone = require('backbone');
-Backbone.$   = $;
-var Graph = require('data-structures').Graph;
-
-var ApplicationRouter = require('./routers/ApplicationRouter');
+var Trains = require('../../../test/Trains.js');
 
 $(function() {
-  var appRouter = new ApplicationRouter;
-  appRouter.start();
 
-var graph = new Graph;
-graph.addNode('A');
-graph.addNode('B');
-graph.addNode('C');
-graph.addEdge('A', 'C');
-console.log('graph', graph);
-
-var out = graph.getAllEdgesOf('A');
-console.log(out);
+	var trains = new Trains();
+	var out = trains.routeLength('AED');
+	console.log(out);
 
 });
+
+
+
+
+	// for (var i=0; i< term.length-1; i++) {
+	// 	temp += out.getEdge(term[i], term[i+1]).weight;
+	// }

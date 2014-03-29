@@ -20,6 +20,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-mocha-cov');
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-arialinter');
+  grunt.loadNpmTasks('grunt-node-inspector');
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -172,7 +173,7 @@ module.exports = function(grunt) {
         }
       },
       options: {
-        files: 'test/*.js',
+        files: 'test/*_test.js',
         ui: 'bdd',
         colors: true
       }
@@ -182,6 +183,10 @@ module.exports = function(grunt) {
       all: {
         files:['server.js', './**/*.js' ],
         tasks:['jshint']
+      },
+      test: {
+        files: ['test/**/*'],
+        tasks:['jshint', 'mochacov:unit']
       },
       express: {
         files:  [ 'server.js','api/**/*','app/assets/**/*','app/*.js' ],
@@ -252,19 +257,24 @@ module.exports = function(grunt) {
       }
     },
     concurrent: {
-      buildDev: ['sass:dev', 'browserify:dev', 'jshint:all']
+      // buildDev: ['sass:dev', 'browserify:dev', 'jshint:all']
+      buildDev: ['browserify:dev', 'jshint:all']
     },
     mongo_drop: {
       test: {
         'uri' : 'mongodb://localhost/oaa-test'
       }
-    }
+    },
+    'node-inspector': {
+      dev: {}
+    },
   });
 
   grunt.registerTask('build:dev', ['clean:dev', 'concurrent:buildDev', 'copy:dev']);
   grunt.registerTask('build:prod', ['clean:prod', 'browserify:prod', 'jshint:all', 'copy:prod']);
   grunt.registerTask('test:prepare', ['mongo_drop', 'mongoimport']);
   grunt.registerTask('test', ['env:test', 'jshint', 'mochacov:unit','mochacov:coverage' ]);
+  grunt.registerTask('test1', ['env:test', 'jshint', 'mochacov:unit','watch:test' ]);
   grunt.registerTask('travis', ['jshint', 'mochacov:unit', 'mochacov:coverage', 'mochacov:coveralls']);
   grunt.registerTask('server', [ 'env:dev', 'build:dev', 'express:dev', 'watch:express', 'notify' ]);
   grunt.registerTask('test:acceptance',['build:dev', 'express:dev', 'casper']);
