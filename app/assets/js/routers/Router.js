@@ -1,3 +1,5 @@
+var Item = require('../models/Item.js');
+var ItemCollection = require('../models/ItemCollection.js');
 var ItemView = require('../views/ItemView.js');
 var Imports = require('../../../../test/Imports.js');
 
@@ -33,13 +35,21 @@ module.exports = Backbone.Router.extend({
 		});
 		console.log(temp);
 
+		var item = new Item(temp);
+		console.log(item);
+
+		var itemCollection = new ItemCollection(item);
+		console.log('itemCollection',itemCollection);
+
 		var temp = imports.addImports({
 			description: "book",
 			price : 20.99,
 			type: 'ImportsRegular'
 		});
-		console.log(temp, imports.getImports());
 
+		itemCollection.add(temp);
+		console.log('itemCollection',itemCollection);
+		
 
 	}
 
