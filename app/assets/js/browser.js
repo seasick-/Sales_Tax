@@ -6,6 +6,8 @@ $(function() {
 
 	var trains = new Trains();
 	var graph = trains.returnGraph();
+	console.log(graph);
+	console.log(graph.getInEdgesOf('B'));
 
 	function getOutEdges(Node) {
 		var Node = graph.getNode(Node);
@@ -14,41 +16,24 @@ $(function() {
 		return NodePropNames;
 	}
 
-	var aEdges = getOutEdges('A');
-	var result = aEdges;
+	var aEdges = getOutEdges('B');
+	var result = ['B'];
 
 	for (var each in aEdges){
 		console.log('1', aEdges[each]);	
 		for (var each1 in aEdges[each]){
-			for (var i=0; i<getOutEdges(aEdges[each][each1]).length; i++){
-				if (getOutEdges(aEdges[each][each1])[i] === 'C'){
-					result[each] += getOutEdges(aEdges[each][each1])[i];
-				}				
-			}
 			console.log('2', getOutEdges(aEdges[each][each1]));
 			for (var each2 in getOutEdges(aEdges[each][each1])){
-				for (var i=0; i<getOutEdges(getOutEdges(aEdges[each][each1])[each2]).length; i++){
-					if (getOutEdges(getOutEdges(aEdges[each][each1])[each2])[i]==='C'){
-						result[each]+= getOutEdges(aEdges[each][each1])[i]  ;
-					}					
+				result[each] += getOutEdges(getOutEdges(aEdges[each][each1])[each2]);
+				console.log('3  ',getOutEdges(getOutEdges(aEdges[each][each1])[each2]));
+				for (var each3 in getOutEdges(getOutEdges(aEdges[each][each1])[each2])){
+					break;
 				}
-				console.log('  ',getOutEdges(getOutEdges(aEdges[each][each1])[each2]));
 			}
 		}
 	}
-
+	result = result[0].replace(',','');
 	console.log(result);
-	for (var i=0; i<result.length; i++){
-		result[i]= 'A'+result[i];
-	}
-	console.log(result);
-
-	var out=[];
-	for (var each in result){
-		out.push(trains.routeLength(result[each]));
-	}
-	console.log(Math.min.apply(Math,out));
-
 });
 
 

@@ -31,5 +31,8 @@ describe('Test', function() {
     expect(trains.shortestA_to_C()).to.be.eql(9);
   });
 
+  it('should report the shortest route from B to B', function() {
+    expect(trains.shortestB_to_B()).to.be.eql(9);
+  });
 
 });

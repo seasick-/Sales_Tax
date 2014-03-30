@@ -69,15 +69,15 @@ module.exports = function (){
     return count;
   }
 
+  function getOutEdges(Node) {
+    var Node = graph.getNode(Node);
+    var NodePropNames;
+    NodePropNames = Object.getOwnPropertyNames(Node._outEdges);
+    return NodePropNames;
+  }
+
   function shortestA_to_C () {
 
-    function getOutEdges(Node) {
-      var Node = graph.getNode(Node);
-      var NodePropNames;
-      NodePropNames = Object.getOwnPropertyNames(Node._outEdges);
-      return NodePropNames;
-    }
-    
     var graph = makeGraph();
     var aEdges = getOutEdges('A');
     var result = aEdges;
@@ -110,12 +110,31 @@ module.exports = function (){
     return (Math.min.apply(Math,out));
   }
 
+  function shortestB_to_B () {
+    var graph = makeGraph();
+    var aEdges = getOutEdges('B');
+    var result = ['B'];
+
+    for (var each in aEdges){
+      for (var each1 in aEdges[each]){
+        for (var each2 in getOutEdges(aEdges[each][each1])){
+          result[each] += getOutEdges(getOutEdges(aEdges[each][each1])[each2]);
+          for (var each3 in getOutEdges(getOutEdges(aEdges[each][each1])[each2])){
+            break;
+          }
+        }
+      }
+    }
+    result = result[0].replace(',','');
+    return computeLength(result);
+  }
 
   return {
     returnGraph: function(){return makeGraph()},
     routeLength: function(route) {return computeLength(route)},
     maxThreeStops: function(first,last) {return maxThreeStops(first,last)},
-    shortestA_to_C: function() {return shortestA_to_C() }
+    shortestA_to_C: function() {return shortestA_to_C()},
+    shortestB_to_B: function() {return shortestB_to_B()}
   }
 
 
