@@ -3,11 +3,11 @@ module.exports = function (){
   'use strict';
 
 	var imports=[];
-
-
+  
   function addImports(Imports) {
-    var tax = function findTax(item, price){
-      if (_.contains(['book','food','medical'], item)){
+    var InputCopy;
+    var tax = function findTax(type, price){
+      if (type === 'ImportsRegular'){
         return price*.05
       }
       else return price*.15
@@ -15,9 +15,11 @@ module.exports = function (){
 		imports.push(new function() {
       this.description = Imports.description;
       this.price = Imports.price;
-      this.tax = tax(this.description, this.price);
+      this.type = Imports.type;
+      this.tax = tax(this.type, this.price);
+      InputCopy = this;
     });
-		return Imports;
+		return InputCopy;
   }
   
   function getImports() {return imports;}

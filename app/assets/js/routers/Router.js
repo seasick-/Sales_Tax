@@ -1,4 +1,5 @@
 var ItemView = require('../views/ItemView.js');
+var Imports = require('../../../../test/Imports.js');
 
 module.exports = Backbone.Router.extend({
 	routes: {
@@ -22,6 +23,24 @@ module.exports = Backbone.Router.extend({
 			console.log($(this).serializeJSON());
 			// $(this).serializeJSON();
 		});
+
+		var imports = new Imports();
+
+		var temp = imports.addImports({
+			description: "Compact disc",
+			price : 20.99,
+			type: 'ImportsGeneral'
+		});
+		console.log(temp);
+
+		var temp = imports.addImports({
+			description: "book",
+			price : 20.99,
+			type: 'ImportsRegular'
+		});
+		console.log(temp, imports.getImports());
+
+
 	}
 
 
