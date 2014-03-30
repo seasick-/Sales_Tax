@@ -15,11 +15,9 @@ function startServer() {
 
   var express  = require('express');
   var app      = express();
-  var cons     = require('consolidate');
   var http     = require('http');
   var path     = require('path');
   var port     = process.env.PORT || 3000;
-  var flash    = require('connect-flash');
   var mongoose = require('mongoose');
 
   app.configure(function() {

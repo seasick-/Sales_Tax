@@ -190,11 +190,13 @@ module.exports = function(grunt) {
       },
       express: {
         files:  [ 'server.js','api/**/*','app/assets/**/*','app/*.js' ],
-        tasks:  [ 'clean', 'copy', 'sass:dev', 'browserify:dev', 'express:dev' ],
+        // tasks:  [ 'clean', 'copy', 'sass:dev', 'browserify:dev', 'express:dev' ],
+        tasks:  [ 'build:dev'],
         options: {
           // for grunt-contrib-watch v0.5.0+, "nospawn: true" for lower versions.
           // Without this option specified express won't be reloaded
-          spawn: false
+          spawn: false,
+          livereload: true
         }
       }
     },
@@ -258,7 +260,7 @@ module.exports = function(grunt) {
     },
     concurrent: {
       // buildDev: ['sass:dev', 'browserify:dev', 'jshint:all']
-      buildDev: ['browserify:dev', 'jshint:all']
+      buildDev: ['sass:dev', 'browserify:dev', 'jshint:all']
     },
     mongo_drop: {
       test: {
