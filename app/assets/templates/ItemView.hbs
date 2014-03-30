@@ -1,22 +1,35 @@
-<form>
-    <div class="row">
-        <div class="col-xs-6">
-            <div class="input-group">
-                <input type="text" class="form-control">
-                <div class="input-group-btn">
-                    <button tabindex="-1" class="btn btn-default" type="button">Add</button>
-                    <button tabindex="-1" data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <ul class="dropdown-menu pull-right">
-                        <li><a href="#">Add</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
+<div>
+    <form id="item">
+        <div class="row">
+            <div class="col-xs-2">
+                <div class="input-group">
+                    <span class="input-group-addon">$</span>
+                    <input type="text" name="price" class="form-control" placeholder="US Dollar">
+                    <span class="input-group-addon"></span>
+                </div>
+            </div>            
+            <div class="col-xs-3">
+                <div class="input-group">
+                    <input type="text" name="description" class="form-control" placeholder="Description">
+                    <div class="input-group-btn">
+                        <!-- <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Item Type <span class="caret"></span></button> -->
+                        <ul class="select pull-right">
+                            <li><a href="#">Book</a></li>
+                            <li><a href="#">Food</a></li>
+                            <li><a href="#"></a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                    <select name="type" class="form-control">
+                        <option value="one">Book</option>
+                        <option value="two">Food</option>
+                        <option value="three">Medical</option>
+                        <option value="four">Import General</option>
+                        <option value="five">Import Book, Food, Medical</option>
+                    </select>
                 </div>
             </div>
         </div>
-    </div>
-</form>
+    </form>
+</div>

@@ -11,6 +11,17 @@ module.exports = Backbone.Router.extend({
 	firstFunction: function() {	
 		var itemView = new ItemView();
 		$('body').append(itemView.el);
+		this.secondFunction();
+	},
+
+	secondFunction: function() {
+		var itemView = new ItemView();
+		$('body').append(itemView.el);		
+
+		$('div').find('#item').each(function(index,form){
+			console.log($(this).serializeJSON());
+			// $(this).serializeJSON();
+		});
 	}
 
 

@@ -1,5 +1,4 @@
 var template = require('../../templates/ItemView.hbs');
-var BootStrap = require('bootstrap');
 
 module.exports = Backbone.View.extend({
 	initialize: function() {
