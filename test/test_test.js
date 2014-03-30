@@ -23,5 +23,8 @@ describe('Test', function() {
     expect(trains.routeLength('ACD')).to.be.eql('NO SUCH ROUTE');
   });
 
+  it('should report the correct number of trips for C-C, with 3 stops max', function() {
+    expect(trains.findThreeStops('C','C')).to.be.eql(2);
+  });
 
 });

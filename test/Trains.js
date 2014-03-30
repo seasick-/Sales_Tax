@@ -3,7 +3,7 @@ var graph = new Graph();
 
 module.exports = function (){
 
-  var initialize  = function makeGraph() {
+  function makeGraph() {
     graph.addNode('A');
     graph.addNode('B');
     graph.addNode('C');
@@ -31,7 +31,7 @@ module.exports = function (){
   }
 
   function computeLength(route) {
-    var graph = initialize();
+    var graph = makeGraph();
     var value=0;
     for (var i=0; i< route.length-1; i++) {
         try {
@@ -42,12 +42,43 @@ module.exports = function (){
       return value;
   }
   
+  function findThreeStops(first,last) {
+    var out = makeGraph();
+    var firstN = out.getNode(first);
+    var temp;
+    var temp1;
+    var temp2;
+    var result;
+    var count=0;
+    // console.log(firstN);
+    for (var each in firstN._outEdges){  
+      temp = Object.getOwnPropertyNames(firstN._outEdges)
+      for (var each1 in temp){
+          temp1 = out.getNode(temp[each1]);
+          // console.log(temp1);
+          for (var each2 in temp1){
+            temp2 = Object.getOwnPropertyNames(temp1._outEdges);
+            // console.log(temp2);
+            for (var each2 in temp2){
+              // console.log(temp2[each2]);
+              if (temp2[each2] === 'C') count++;
+              result = out.getEdge(temp2[each2], last);
+              if (result === last  || result !== undefined) count++;
+            }
+            break;
+          }
+      }
+      break;
+    }    
+    return count;
+  }
+
   return {
     routeLength: function(route) {
       return computeLength(route);
     },
-    startANDend: function() {
-      return initialize();
+    findThreeStops: function(first,last) {
+      return findThreeStops(first,last);
     }
   }
 
