@@ -56,7 +56,7 @@ module.exports = function(grunt) {
       dev: {
         expand: true,
         cwd: 'app/assets',
-        src: ['css/*.css', '*.html', 'images/**/*' ],
+        src: ['css/*.css', '*.html', 'images/**/*', 'lib/**/*' ],
         dest: 'build/',
         flatten: false,
         filter: 'isFile'
@@ -217,18 +217,6 @@ module.exports = function(grunt) {
         jshintrc: true
       }
     },
-    sass: {
-      dist: {
-        files: {'build/css/styles.css': 'app/assets/scss/styles.scss'}
-      },
-      dev: {
-        options: {
-          includePaths: ['app/assets/scss/'],
-          sourceComments: 'map'
-        },
-        files: {'build/css/styles.css': 'app/assets/scss/styles.scss'}
-      }
-    },
     mongoimport: {
       options: {
         db : 'oaa-test',
@@ -259,8 +247,7 @@ module.exports = function(grunt) {
       }
     },
     concurrent: {
-      // buildDev: ['sass:dev', 'browserify:dev', 'jshint:all']
-      buildDev: ['sass:dev', 'browserify:dev']
+      buildDev: ['browserify:dev']
     },
     mongo_drop: {
       test: {
