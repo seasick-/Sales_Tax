@@ -6,7 +6,7 @@ var chai = require('chai'),
   MedicalProduct = require('./MedicalProduct.js'),
   medicalProduct = new MedicalProduct();
 
-describe('Add Food', function() {  
+describe('Add MedicalProducts', function() {  
   var tylenol = {
     description:'Aspirin',
     price: 5.49,

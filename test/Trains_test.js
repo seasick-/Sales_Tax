@@ -23,16 +23,16 @@ describe('Test', function() {
     expect(trains.routeLength('ACD')).to.be.eql('NO SUCH ROUTE');
   });
 
-  // it('should report the correct number of trips for C-C, with 3 stops max', function() {
-  //   expect(trains.maxThreeStops('C','C')).to.be.eql(2);
-  // });
+  it('should report the correct number of trips for C-C, with 3 stops max', function() {
+    expect(trains.maxThreeStops('C','C')).to.be.eql(2);
+  });
 
-  // it('should report the shortest route from A to C', function() {
-  //   expect(trains.shortestA_to_C()).to.be.eql(9);
-  // });
+  it('should report the shortest route from A to C', function() {
+    expect(trains.shortestA_to_C()).to.be.eql(9);
+  });
 
-  // it('should report the shortest route from B to B', function() {
-  //   expect(trains.shortestB_to_B()).to.be.eql(9);
-  // });
+  it('should report the shortest route from B to B', function() {
+    expect(trains.shortestB_to_B()).to.be.eql(9);
+  });
 
 });
