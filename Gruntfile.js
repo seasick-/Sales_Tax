@@ -186,7 +186,7 @@ module.exports = function(grunt) {
       },
       test: {
         files: ['test/**/*'],
-        tasks:['jshint', 'mochacov:unit']
+        tasks:['mochacov:unit']
       },
       express: {
         files:  [ 'server.js','api/**/*','app/assets/**/*','app/*.js' ],
@@ -212,7 +212,7 @@ module.exports = function(grunt) {
       }
     },
     jshint: {
-      all: ['Gruntfile.js', 'server.js', 'api/**/*.js', 'app/assets**/*.js'],
+      all: ['Gruntfile.js', 'server.js', 'api/**/*.js', 'app/assets**/*.js', 'test/Book_test.js', 'test/Book.js'],
       options: {
         jshintrc: true
       }
@@ -275,8 +275,8 @@ module.exports = function(grunt) {
   grunt.registerTask('build:dev', ['clean:dev', 'concurrent:buildDev', 'copy:dev']);
   grunt.registerTask('build:prod', ['clean:prod', 'browserify:prod', 'jshint:all', 'copy:prod']);
   grunt.registerTask('test:prepare', ['mongo_drop', 'mongoimport']);
-  grunt.registerTask('test', ['env:test', 'jshint', 'mochacov:unit','mochacov:coverage' ]);
-  grunt.registerTask('test1', ['env:test', 'jshint', 'mochacov:unit','watch:test' ]);
+  grunt.registerTask('test', ['env:test', 'mochacov:unit','mochacov:coverage']);
+  grunt.registerTask('test1', ['env:test', 'mochacov:unit','watch:test']);
   grunt.registerTask('travis', ['jshint', 'mochacov:unit', 'mochacov:coverage', 'mochacov:coveralls']);
   grunt.registerTask('server', [ 'env:dev', 'build:dev', 'express:dev', 'watch:express', 'notify' ]);
   grunt.registerTask('test:acceptance',['build:dev', 'express:dev', 'casper']);
