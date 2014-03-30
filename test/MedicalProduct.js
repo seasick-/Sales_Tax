@@ -1,33 +1,33 @@
 module.exports = function (){
   'use strict';
 
-	var foods=[];
+	var medicalProducts=[];
 
-  function addFood(Food) {
-		foods.push({
-			description:Food.description,
-			price:Food.price,
+  function addMedicalProduct(MedicalProduct) {
+		medicalProducts.push({
+			description:MedicalProduct.description,
+			price:MedicalProduct.price,
 			tax: 0
 		});
-		return Food;
+		return MedicalProduct;
   }
   
-  function getFoods() {return foods;}
+  function getMedicalProducts() {return medicalProducts;}
 
 	function getTotalTax() {
 		var total=0;
-		for (var each in foods){
-			total+=foods[each].tax;
+		for (var each in medicalProducts){
+			total+=medicalProducts[each].tax;
 		}
 		return total;
 	}
 
   return {
-    addFood: function(Food){
-      return addFood(Food);
+    addMedicalProduct: function(MedicalProduct){
+      return addMedicalProduct(MedicalProduct);
     },
-    getFoods: function() {
-    	return getFoods();
+    getMedicalProducts: function() {
+    	return getMedicalProducts();
     },
     getTotalTax: function() {
     	return getTotalTax();
