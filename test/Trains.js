@@ -50,18 +50,14 @@ module.exports = function (){
     var temp2;
     var result;
     var count=0;
-    // console.log(firstN);
     for (var each in firstN._outEdges){  
       temp = Object.getOwnPropertyNames(firstN._outEdges)
       for (var each1 in temp){
           temp1 = out.getNode(temp[each1]);
-          // console.log(temp1);
           for (var each2 in temp1){
             temp2 = Object.getOwnPropertyNames(temp1._outEdges);
-            // console.log(temp2);
             for (var each2 in temp2){
-              // console.log(temp2[each2]);
-              if (temp2[each2] === 'C') count++;
+              if (temp2[each2] === last) count++;
               result = out.getEdge(temp2[each2], last);
               if (result === last  || result !== undefined) count++;
             }
@@ -74,6 +70,7 @@ module.exports = function (){
   }
 
   return {
+    returnGraph: function(){return makeGraph()},
     routeLength: function(route) {
       return computeLength(route);
     },
