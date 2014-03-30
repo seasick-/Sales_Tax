@@ -1,13 +1,10 @@
 'use strict';
-var $        = require('jquery');
 var Trains = require('../../../test/Trains.js');
 
 $(function() {
 
 	var trains = new Trains();
 	var graph = trains.returnGraph();
-	console.log(graph);
-	console.log(graph.getInEdgesOf('B'));
 
 	function getOutEdges(Node) {
 		var Node = graph.getNode(Node);

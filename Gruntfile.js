@@ -260,7 +260,7 @@ module.exports = function(grunt) {
     },
     concurrent: {
       // buildDev: ['sass:dev', 'browserify:dev', 'jshint:all']
-      buildDev: ['sass:dev', 'browserify:dev', 'jshint:all']
+      buildDev: ['sass:dev', 'browserify:dev']
     },
     mongo_drop: {
       test: {
