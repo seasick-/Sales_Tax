@@ -24,7 +24,11 @@ describe('Test', function() {
   });
 
   it('should report the correct number of trips for C-C, with 3 stops max', function() {
-    expect(trains.findThreeStops('C','C')).to.be.eql(2);
+    expect(trains.maxThreeStops('C','C')).to.be.eql(2);
+  });
+
+  it('should report the shortest route from A to C', function() {
+    expect(trains.shortestA_to_C()).to.be.eql(9);
   });
 
 
