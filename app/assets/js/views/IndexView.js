@@ -46,6 +46,7 @@ module.exports = Backbone.View.extend({
 			if (eachItem.type === 'DomesticGeneral' || 
 				eachItem.type === 'DomesticRegular'){
 				temp = domestic.addDomestic(eachItem);
+				console.log('temp', temp);
 				itemCollection.add(temp);
 			}
 			if (eachItem.type === 'ImportsGeneral' || 

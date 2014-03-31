@@ -8,10 +8,9 @@ module.exports = Backbone.View.extend({
 	},
 
 	render: function() {
-		this.collection.each(function(model){
-			console.log(model);
-		});
-		var itemCollectionsView = template('');
+		console.log(this.collection);
+		console.log(this.collection.toJSON());
+		var itemCollectionsView = template(this.collection.toJSON());
 		this.$el.html(itemCollectionsView);
 		$('#results').html(this.$el.html());
 		return this;  
