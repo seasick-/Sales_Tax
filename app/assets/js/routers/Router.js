@@ -7,26 +7,14 @@ var Imports = require('../../../../test/Imports.js');
 
 module.exports = Backbone.Router.extend({
 	routes: {
-		'': 'repaint',
-		'showResult': 'showResult'
+		'': ''
 	},
 
 	initialize: function(){
 		console.log('Initialized');
 		var indexView = new IndexView();
 		var itemView = new ItemView();
-		$('#priceItems').append(itemView.el);
-	},
-
-	repaint: function() {
-		$('.main').append(this.save);
-		Events.trigger('resetCollection');
-	},
-
-	showResult: function() {
-		this.save = $('.main').clone();
-		$('.main').empty();
+		$('#priceItems').append(itemView.el);		
 	}
-
 
 })

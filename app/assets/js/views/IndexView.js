@@ -5,7 +5,7 @@ var ItemCollection = require('../models/ItemCollection.js');
 var ItemCollectionView = require('../views/ItemCollectionView.js');
 var Domestic = require('../../../../test/Domestic.js');
 var Imports = require('../../../../test/Imports.js');
-var itemCollection = new ItemCollection;
+// var itemCollection = new ItemCollection;
 var domestic = new Domestic();
 var imports = new Imports();
 
@@ -13,10 +13,10 @@ module.exports = Backbone.View.extend({
 	className:'main',
 
 	initialize: function() {
-		Events.on('resetCollection', function() {
-			console.log('reset');
-			itemCollection.reset();
-		});
+		// Events.on('resetCollection', function() {
+		// 	console.log('reset');
+		// 	itemCollection.reset([]);
+		// });
 
 		this.render();
 	},
@@ -36,11 +36,13 @@ module.exports = Backbone.View.extend({
 	},
 
 	CalculateTotal_Render: function() {
+		console.log('here');
+		var itemCollection = new ItemCollection();
 		var eachItem;
 		var temp;
 		$('div').find('#item').each(function(index,form){
 			eachItem = $(this).serializeJSON();
-			// console.log(eachItem);
+			console.log(eachItem);
 			if (eachItem.type === 'DomesticGeneral' || 
 				eachItem.type === 'DomesticRegular'){
 				temp = domestic.addDomestic(eachItem);
@@ -51,10 +53,9 @@ module.exports = Backbone.View.extend({
 				temp = imports.addImports(eachItem);
 				itemCollection.add(temp);
 			}
-			// console.log(itemCollection);
-			var itemCollectionView = new ItemCollectionView({collection:itemCollection});
-			// Backbone.history.navigate('showResult', {trigger:true});
 		});		
+		// Backbone.history.navigate('showResult', {trigger:true});
+		var itemCollectionView = new ItemCollectionView({collection:itemCollection});
 	},
 
 	render: function() {
