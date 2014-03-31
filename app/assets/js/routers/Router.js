@@ -11,11 +11,11 @@ module.exports = Backbone.Router.extend({
 	initialize: function(){
 		console.log('Initialized');
 		var indexView = new IndexView();
+		var itemView = new ItemView();
+		$('#priceItems').append(itemView.el);
 	},
 	firstFunction: function() {	
 		var itemView = new ItemView();
-		$('body').append(itemView.el);
-		this.secondFunction();
 	},
 
 	secondFunction: function() {
