@@ -1,15 +1,16 @@
 var Item = require('../models/Item.js');
 var ItemCollection = require('../models/ItemCollection.js');
+var IndexView = require('../views/IndexView.js');
 var ItemView = require('../views/ItemView.js');
 var Imports = require('../../../../test/Imports.js');
 
 module.exports = Backbone.Router.extend({
 	routes: {
-		'': ''
+		'': 'add'
 	},
 	initialize: function(){
-		console.log('router has been initialized')
-		this.firstFunction();
+		console.log('Initialized');
+		var indexView = new IndexView();
 	},
 	firstFunction: function() {	
 		var itemView = new ItemView();
@@ -49,7 +50,7 @@ module.exports = Backbone.Router.extend({
 
 		itemCollection.add(temp);
 		console.log('itemCollection',itemCollection);
-		
+
 
 	}
 
