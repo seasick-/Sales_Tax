@@ -19,6 +19,7 @@ module.exports = function (){
       this.tax = tax(this.type, this.price);
       InputCopy = this;
     });
+    // console.log('domestics', domestics);
     return InputCopy;
   }
   
