@@ -6,14 +6,16 @@ var Imports = require('./Imports.js'),
 module.exports = function (){
   'use strict';
 
+
   function calculateTotalPrice(domestics,imports){
     var temp1=0;
     var temp2=0;
+    
     for (var each in domestics.getDomestics()){
-        temp1+=domestics.getDomestics()[each].price;
+        temp1+=Number(domestics.getDomestics()[each].price);
     }
     for (var each in imports.getImports()){
-        temp2+=imports.getImports()[each].price;
+        temp2+=Number(imports.getImports()[each].price);
     }
     return temp1+temp2;
   }
@@ -24,7 +26,7 @@ module.exports = function (){
       return 'error'
     }
     else {
-      return domestics.getTotalTax() + imports.getTotalTax();
+      return Number(domestics.getTotalTax()) + Number(imports.getTotalTax());
     }
   }
   
