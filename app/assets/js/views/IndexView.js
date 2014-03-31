@@ -23,7 +23,7 @@ module.exports = Backbone.View.extend({
 	events: {
 		'click #Add':'AddListItem',
 		'click #Delete':'DeleteListItem',
-		'click #Calculate' : 'CalculateTotal',
+		'click #Calculate' : 'CalculateTotal_Render',
 	},
 	
 	AddListItem: function() {
@@ -35,12 +35,12 @@ module.exports = Backbone.View.extend({
 		$(e.currentTarget).parentsUntil('.items').remove();
 	},
 
-	CalculateTotal: function() {
+	CalculateTotal_Render: function() {
 		var eachItem;
 		var temp;
 		$('div').find('#item').each(function(index,form){
 			eachItem = $(this).serializeJSON();
-			console.log(eachItem);
+			// console.log(eachItem);
 			if (eachItem.type === 'DomesticGeneral' || 
 				eachItem.type === 'DomesticRegular'){
 				temp = domestic.addDomestic(eachItem);
@@ -51,8 +51,9 @@ module.exports = Backbone.View.extend({
 				temp = imports.addImports(eachItem);
 				itemCollection.add(temp);
 			}
-			Backbone.history.navigate('showResult', {trigger:true});
-			
+			// console.log(itemCollection);
+			var itemCollectionView = new ItemCollectionView({collection:itemCollection});
+			// Backbone.history.navigate('showResult', {trigger:true});
 		});		
 	},
 
