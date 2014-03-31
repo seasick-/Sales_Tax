@@ -2,7 +2,7 @@ var template = require('../../templates/ItemView.hbs');
 
 module.exports = Backbone.View.extend({
 	// tagName:'div',
-	// className: 'items',
+	className: 'items',
 
 	initialize: function() {
 		console.log('another');
