@@ -66,7 +66,6 @@ describe('Tax should be 15% of cost if not book, food or medical', function() {
 
   it('should report 5% tax on books, food and medical items', function() {
     expect(imports.addImports(Book).tax).to.be.eql(14.99*.05)
-    console.log(imports.getImports());
     expect(imports.getTotalTax()).to.be.eql(3.1485+(500.99*.15)+(14.99*.05)+0.49950000000000006);
   })
 
