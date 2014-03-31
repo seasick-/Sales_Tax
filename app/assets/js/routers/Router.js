@@ -1,3 +1,4 @@
+var Events = require('../Events.js');
 var Item = require('../models/Item.js');
 var ItemCollection = require('../models/ItemCollection.js');
 var IndexView = require('../views/IndexView.js');
@@ -6,52 +7,25 @@ var Imports = require('../../../../test/Imports.js');
 
 module.exports = Backbone.Router.extend({
 	routes: {
-		'': 'add'
+		'': 'repaint',
+		'showResult': 'showResult'
 	},
+
 	initialize: function(){
 		console.log('Initialized');
 		var indexView = new IndexView();
 		var itemView = new ItemView();
 		$('#priceItems').append(itemView.el);
 	},
-	firstFunction: function() {	
-		var itemView = new ItemView();
+
+	repaint: function() {
+		$('.main').append(this.save);
+		Events.trigger('resetCollection');
 	},
 
-	secondFunction: function() {
-		var itemView = new ItemView();
-		$('body').append(itemView.el);		
-
-		$('div').find('#item').each(function(index,form){
-			console.log($(this).serializeJSON());
-			// $(this).serializeJSON();
-		});
-
-		var imports = new Imports();
-
-		var temp = imports.addImports({
-			description: "Compact disc",
-			price : 20.99,
-			type: 'ImportsGeneral'
-		});
-		console.log(temp);
-
-		var item = new Item(temp);
-		console.log(item);
-
-		var itemCollection = new ItemCollection(item);
-		console.log('itemCollection',itemCollection);
-
-		var temp = imports.addImports({
-			description: "book",
-			price : 20.99,
-			type: 'ImportsRegular'
-		});
-
-		itemCollection.add(temp);
-		console.log('itemCollection',itemCollection);
-
-
+	showResult: function() {
+		this.save = $('.main').clone();
+		$('.main').empty();
 	}
 
 

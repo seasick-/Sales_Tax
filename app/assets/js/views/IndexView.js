@@ -1,4 +1,4 @@
-// var Serialize = require('../lib/jquery.serializeJSON.js');
+var Events = require('../Events.js');
 var template = require('../../templates/IndexView.hbs');
 var ItemView = require('./ItemView.js');
 var ItemCollection = require('../models/ItemCollection.js');
@@ -10,14 +10,21 @@ var imports = new Imports();
 
 module.exports = Backbone.View.extend({	
 	className:'main',
+
 	initialize: function() {
+		Events.on('resetCollection', function() {
+			console.log('reset');
+			itemCollection.reset();
+		});
+
 		this.render();
 	},
 	events: {
 		'click #Add':'AddListItem',
 		'click #Delete':'DeleteListItem',
-		'click #Calculate' : 'CalculateTotal'
+		'click #Calculate' : 'CalculateTotal',
 	},
+
 
 	AddListItem: function() {
 		var itemView = new ItemView();
@@ -44,7 +51,8 @@ module.exports = Backbone.View.extend({
 				temp = imports.addImports(eachItem);
 				itemCollection.add(temp);
 			}
-			console.log(itemCollection, domestic.getDomestics(), imports.getImports());
+			console.log(itemCollection);
+			Backbone.history.navigate('showResult/', {trigger:true});
 		});		
 	},
 
