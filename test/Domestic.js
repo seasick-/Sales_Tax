@@ -1,4 +1,7 @@
-var _ = require('underscore')
+var _ = require('underscore'),
+      Round5Cents = require('./Round5Cents.js'),
+      round5Cents = new Round5Cents();
+
 module.exports = function (){
   'use strict';
 
@@ -10,7 +13,7 @@ module.exports = function (){
       if (type === 'DomesticRegular'){
         return price*0
       }
-      else return price*.10
+      else return round5Cents.Round5Cents(price*.10)
     }
     domestics.push(new function() {
       this.description = Domestics.description;

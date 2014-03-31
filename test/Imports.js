@@ -1,4 +1,7 @@
-var _ = require('underscore')
+var _ = require('underscore'),
+  Round5Cents = require('./Round5Cents.js'),
+  round5Cents = new Round5Cents();
+
 module.exports = function (){
   'use strict';
 
@@ -8,9 +11,9 @@ module.exports = function (){
     var InputCopy;
     var tax = function findTax(type, price){
       if (type === 'ImportsRegular'){
-        return price*.05
+        return round5Cents.Round5Cents(price*.05)
       }
-      else return price*.15
+      else return round5Cents.Round5Cents(price*.15)
     }
 		imports.push(new function() {
       this.description = Imports.description;

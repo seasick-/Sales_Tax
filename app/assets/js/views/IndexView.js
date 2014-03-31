@@ -2,6 +2,7 @@ var Events = require('../Events.js');
 var template = require('../../templates/IndexView.hbs');
 var ItemView = require('./ItemView.js');
 var ItemCollection = require('../models/ItemCollection.js');
+var ItemCollectionView = require('../views/ItemCollectionView.js');
 var Domestic = require('../../../../test/Domestic.js');
 var Imports = require('../../../../test/Imports.js');
 var itemCollection = new ItemCollection;
@@ -24,8 +25,7 @@ module.exports = Backbone.View.extend({
 		'click #Delete':'DeleteListItem',
 		'click #Calculate' : 'CalculateTotal',
 	},
-
-
+	
 	AddListItem: function() {
 		var itemView = new ItemView();
 		$('#priceItems').append(itemView.el);
@@ -51,8 +51,8 @@ module.exports = Backbone.View.extend({
 				temp = imports.addImports(eachItem);
 				itemCollection.add(temp);
 			}
-			console.log(itemCollection);
-			Backbone.history.navigate('showResult/', {trigger:true});
+			Backbone.history.navigate('showResult', {trigger:true});
+			
 		});		
 	},
 
