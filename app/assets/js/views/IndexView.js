@@ -41,12 +41,19 @@ module.exports = Backbone.View.extend({
 		function errorCheck(value){
 			if (isNaN(value.price)) {
 				alert('Only input numbers');
-				return true;
+			return true;
 			}
 			if (value.price === ''){
 				alert('One of your fields have not been filled.');
 				return true;
 			}
+		}
+
+		function checkInput(value){
+			if (value.description === ''){
+				value.description = 'No description';
+			}
+			return value;
 		}
 
 		$('div').find('#item').each(function(index,form){
@@ -60,13 +67,14 @@ module.exports = Backbone.View.extend({
 			if (eachItem.type === 'DomesticGeneral' || 
 				eachItem.type === 'DomesticRegular'){
 				temp = domestic.addDomestic(eachItem);
-				itemCollection.add(temp);
+				itemCollection.add(checkInput(temp));
 			}
 			if (eachItem.type === 'ImportsGeneral' || 
 				eachItem.type === 'ImportsRegular'){
 				temp = imports.addImports(eachItem);
-				itemCollection.add(temp);
+				itemCollection.add(checkInput(temp));
 			}
+
 		});		
 		if (toggle){
 			var itemCollectionView = new ItemCollectionView({collection:itemCollection, 
