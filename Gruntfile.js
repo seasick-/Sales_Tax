@@ -205,7 +205,7 @@ module.exports = function(grunt) {
           //'log-level': 'debug'
         },
         files : {
-          'test/acceptance/casper-results.xml' : ['test/acceptance/*_test.js']
+          'test/acceptance/casper-results.xml' : ['test/acceptance/home_page_test.js']
         }
       }
     },
@@ -262,7 +262,7 @@ module.exports = function(grunt) {
   grunt.registerTask('test:prepare', ['mongo_drop', 'mongoimport']);
   grunt.registerTask('test', ['env:test', 'mochacov:unit','mochacov:coverage']);
   grunt.registerTask('test1', ['env:test', 'mochacov:unit','watch:test']);
-  grunt.registerTask('travis', ['jshint', 'mochacov:unit', 'mochacov:coverage', 'mochacov:coveralls']);
+  grunt.registerTask('travis', ['mochacov:unit', 'mochacov:coverage', 'mochacov:coveralls']);
   grunt.registerTask('server', [ 'env:dev', 'build:dev', 'express:dev', 'watch:express', 'notify' ]);
   grunt.registerTask('test:acceptance',['build:dev', 'express:dev', 'casper']);
   grunt.registerTask('default', ['jshint', 'test','watch:express']);
