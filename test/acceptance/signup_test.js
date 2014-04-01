@@ -7,21 +7,29 @@ casper.test.begin('Click Add', 3, function suite(test) {
     test.assertHttpStatus(200);
   });
 
+  casper.waitForAlert(function(response) {
+      this.echo("Alert received: " + response.data);
+  });
+
   casper.then(function() {
     casper.wait(200, function() {
       this.echo('Wait for container to pop up');
     });  
   });
 
-  casper.then(function(){
-    this.fill('form#item', {
-      'price': '45.99',
-      'description': 'Perfume'
-    }, true);
-  });
+  // casper.then(function(){
+  //   this.fill('form#item', {
+  //     'price': '45.99',
+  //     'description': 'Perfume'
+  //   }, true);
+  // });
+
+  casper.on('remote.alert', function(message){
+    this.echo('alert message:' + message);
+  })
 
   casper.then(function() {
-    this.mouseEvent('click', '#Calculate');
+    this.mouseEvent('click', '#Add');
   });
 
   casper.then(function() {
