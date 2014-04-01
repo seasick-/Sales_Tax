@@ -11,7 +11,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-casper');
   grunt.loadNpmTasks('grunt-env');
-  grunt.loadNpmTasks('grunt-mongo-drop');
   grunt.loadNpmTasks('grunt-mocha-cov');
   grunt.loadNpmTasks('grunt-concurrent');
 
