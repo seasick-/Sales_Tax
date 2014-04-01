@@ -1,5 +1,6 @@
 var template1 = require('../../templates/ItemCollectionView1.hbs');
 var template2 = require('../../templates/ItemCollectionView2.hbs');
+var num = require('../../lib/underscore.number.min.js');
 
 module.exports = Backbone.View.extend({
 	className: 'itemCollections',
@@ -13,8 +14,8 @@ module.exports = Backbone.View.extend({
 
 		var itemCollectionsView1 = template1(this.collection.toJSON());
 		var itemCollectionsView2 = template2({
-			total:this.options.totals.total,
-			tax:this.options.totals.tax
+			total: num.round(this.options.totals.total,3),
+			tax: this.options.totals.tax
 		});
 
 		this.$el.html(itemCollectionsView1);
