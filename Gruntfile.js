@@ -177,10 +177,11 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build:dev', ['clean:dev', 'concurrent:buildDev', 'copy:dev']);
   grunt.registerTask('build:prod', ['clean:prod', 'browserify:prod', 'jshint:all', 'copy:prod']);
-  grunt.registerTask('test', ['env:test', 'mochacov:unit', 'test:acceptance']);
+  grunt.registerTask('test', ['env:test', 'mochacov:unit', 'mochacov:coverage','test:acceptance']);
   grunt.registerTask('travis', ['mochacov:unit', 'mochacov:coverage', 'test:acceptance', 'mochacov:coveralls']);
   grunt.registerTask('server', [ 'env:dev', 'build:dev', 'express:dev', 'watch:express' ]);
   grunt.registerTask('test:acceptance',['build:dev', 'express:dev', 'casper']);
   grunt.registerTask('default', ['jshint', 'test','watch:express']);
 
+  grunt.option('force', true);
 };
