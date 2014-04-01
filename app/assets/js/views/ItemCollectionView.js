@@ -15,7 +15,7 @@ module.exports = Backbone.View.extend({
 		var itemCollectionsView1 = template1(this.collection.toJSON());
 		var itemCollectionsView2 = template2({
 			total: num.round(this.options.totals.total,3),
-			tax: this.options.totals.tax
+			tax: num.round(this.options.totals.tax,3)
 		});
 
 		this.$el.html(itemCollectionsView1);

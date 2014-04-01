@@ -1,7 +1,7 @@
-oaa
-===
+Sales_Tax
+=========
 
-Our Agenda App
+Coding challenge
 
 [![Dependency Status](https://gemnasium.com/codefellows/oaa.png)](https://gemnasium.com/codefellows/oaa)
 [![Code Climate](https://codeclimate.com/github/codefellows/oaa.png)](https://codeclimate.com/github/codefellows/oaa)
@@ -18,11 +18,7 @@ From project directory...
 Acceptance tests need:
 
 1. phantomjs and casperjs installed globally:
-`npm install -g phantomjs casperjs` is the preferred method although you may
-need to use your system package manager (brew, apt-get, yum, etc) to install them.
-Set a PHANTOMJS_EXECUTABLE environment variable to point to your PhantomJS install.
-2. some seed data to pass:
-`grunt mongoimport && grunt test:acceptance`
+`npm install -g phantomjs casperjs` is the preferred method for installation.
 
 ## Grunt Tasks
 `default`: jshint, test, watch:express  

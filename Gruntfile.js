@@ -80,24 +80,6 @@ module.exports = function(grunt) {
       }
     },
 
-    notify: {
-      server: {
-        options: {
-          message: 'Server is ready'
-        }
-      },
-      express: {
-        options: {
-          message: 'express is ready'
-        }
-      },
-      watch: {
-        options: {
-          message: 'watch'
-        }
-      }
-    },
-
     express: {
       options: {
         // Override defaults here
@@ -184,63 +166,20 @@ module.exports = function(grunt) {
           //'log-level': 'debug'
         },
         files : {
-          'test/acceptance/casper-results.xml' : ['test/acceptance/signup_test.js']
+          'test/acceptance/casper-results.xml' : ['test/acceptance/home_page_test.js']
         }
-      }
-    },
-    jshint: {
-      all: ['Gruntfile.js', 'server.js', 'api/**/*.js', 'app/assets**/*.js', 'test/Book_test.js', 'test/Book.js'],
-      options: {
-        jshintrc: true
-      }
-    },
-    mongoimport: {
-      options: {
-        db : 'oaa-test',
-        //optional
-        //host : 'localhost',
-        //port: '27017',
-        //username : 'username',
-        //password : 'password',
-        //stopOnError : false,
-        collections : [
-          {
-            name : 'users',
-            type : 'json',
-            file : 'db/seeds/users.json',
-            jsonArray : true,  //optional
-            upsert : true,  //optional
-            drop : true  //optional
-          },
-          {
-            name : 'meetings',
-            type :'json',
-            file : 'db/seeds/meetings.json',
-            jsonArray : true,
-            upsert : true,
-            drop : true
-          }
-        ]
       }
     },
     concurrent: {
       buildDev: ['browserify:dev']
     },
-    mongo_drop: {
-      test: {
-        'uri' : 'mongodb://localhost/oaa-test'
-      }
-    },
   });
 
   grunt.registerTask('build:dev', ['clean:dev', 'concurrent:buildDev', 'copy:dev']);
   grunt.registerTask('build:prod', ['clean:prod', 'browserify:prod', 'jshint:all', 'copy:prod']);
-  grunt.registerTask('test:prepare', ['mongo_drop', 'mongoimport']);
-  grunt.registerTask('test', ['env:test', 'mochacov:unit','mochacov:coverage']);
-  grunt.registerTask('test1', ['env:test', 'mochacov:unit', 'mochacov:coverage', 'watch:test']);
-  grunt.registerTask('test2', ['env:test', 'test:acceptance', 'watch:test']);
-  grunt.registerTask('travis', ['mochacov:unit', 'mochacov:coverage', 'mochacov:coveralls']);
-  grunt.registerTask('server', [ 'env:dev', 'build:dev', 'express:dev', 'watch:express', 'notify' ]);
+  grunt.registerTask('test', ['env:test', 'mochacov:unit','mochacov:coverage', 'test:acceptance']);
+  grunt.registerTask('travis', ['mochacov:unit', 'mochacov:coverage', 'test:acceptance', 'mochacov:coveralls']);
+  grunt.registerTask('server', [ 'env:dev', 'build:dev', 'express:dev', 'watch:express' ]);
   grunt.registerTask('test:acceptance',['build:dev', 'express:dev', 'casper']);
   grunt.registerTask('default', ['jshint', 'test','watch:express']);
 
