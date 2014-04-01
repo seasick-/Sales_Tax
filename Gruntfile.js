@@ -61,17 +61,6 @@ module.exports = function(grunt) {
       }
     },
 
-    arialinter: {
-      files: [
-        './app/assets/*.html',
-        './app/assets/templates/*.hbs'
-      ],
-      options: {
-        templates: true,
-        levels: 'A'
-      }
-    },
-
     browserify: {
       prod: {
         src: ['app/assets/js/*.js'],
@@ -128,17 +117,6 @@ module.exports = function(grunt) {
       test: {
         options: {
           script: 'server.js',
-          node_env: 'test'
-        }
-      }
-    },
-    simplemocha: {
-      test:{
-        src:['test/*_test.js','!test/acceptance/*_test.js'],
-        options:{
-          reporter: 'spec',
-          slow: 200,
-          timeout: 1000,
           node_env: 'test'
         }
       }
@@ -206,7 +184,7 @@ module.exports = function(grunt) {
           //'log-level': 'debug'
         },
         files : {
-          'test/acceptance/casper-results.xml' : ['test/acceptance/home_page_test.js']
+          'test/acceptance/casper-results.xml' : ['test/acceptance/signup_test.js']
         }
       }
     },
@@ -253,9 +231,6 @@ module.exports = function(grunt) {
         'uri' : 'mongodb://localhost/oaa-test'
       }
     },
-    'node-inspector': {
-      dev: {}
-    },
   });
 
   grunt.registerTask('build:dev', ['clean:dev', 'concurrent:buildDev', 'copy:dev']);
@@ -263,7 +238,7 @@ module.exports = function(grunt) {
   grunt.registerTask('test:prepare', ['mongo_drop', 'mongoimport']);
   grunt.registerTask('test', ['env:test', 'mochacov:unit','mochacov:coverage']);
   grunt.registerTask('test1', ['env:test', 'mochacov:unit', 'mochacov:coverage', 'watch:test']);
-  grunt.registerTask('test2', ['env:test', 'mochacov:unit', 'watch:test']);
+  grunt.registerTask('test2', ['env:test', 'test:acceptance', 'watch:test']);
   grunt.registerTask('travis', ['mochacov:unit', 'mochacov:coverage', 'mochacov:coveralls']);
   grunt.registerTask('server', [ 'env:dev', 'build:dev', 'express:dev', 'watch:express', 'notify' ]);
   grunt.registerTask('test:acceptance',['build:dev', 'express:dev', 'casper']);
