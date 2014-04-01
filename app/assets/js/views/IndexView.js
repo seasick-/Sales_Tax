@@ -11,13 +11,9 @@ module.exports = Backbone.View.extend({
 	className:'main',
 
 	initialize: function() {
-		// Events.on('resetCollection', function() {
-		// 	console.log('reset');
-		// 	itemCollection.reset([]);
-		// });
-
 		this.render();
 	},
+
 	events: {
 		'click #Add':'AddListItem',
 		'click #Delete':'DeleteListItem',
@@ -33,22 +29,37 @@ module.exports = Backbone.View.extend({
 		$(e.currentTarget).parentsUntil('.items').remove();
 	},
 
-	CalculateTotal_Render: function() {
+	CalculateTotal_Render: function(e) {
 		var eachItem;
 		var temp;
 		var itemCollection = new ItemCollection();
 		var domestic = new Domestic();
 		var imports = new Imports();
 		var calcResults = new CalcResults();
+		var toggle=true;
 
+		function errorCheck(value){
+			if (isNaN(value.price)) {
+				alert('Only input numbers');
+				return true;
+			}
+			if (value.price === ''){
+				alert('One of your fields have not been filled.');
+				return true;
+			}
+		}
 
 		$('div').find('#item').each(function(index,form){
 			eachItem = $(this).serializeJSON();
-			console.log(eachItem);
+			// console.log(eachItem);			
+			if (errorCheck(eachItem)){
+				toggle=false;
+				return;
+			}
+
 			if (eachItem.type === 'DomesticGeneral' || 
 				eachItem.type === 'DomesticRegular'){
 				temp = domestic.addDomestic(eachItem);
-				console.log('temp', temp);
 				itemCollection.add(temp);
 			}
 			if (eachItem.type === 'ImportsGeneral' || 
@@ -57,11 +68,13 @@ module.exports = Backbone.View.extend({
 				itemCollection.add(temp);
 			}
 		});		
-		var itemCollectionView = new ItemCollectionView({collection:itemCollection, 
-			totalPrice: calcResults.calculateTotalPrice(domestic,imports),
-			totalTax: calcResults.calculateTotalTax(domestic,imports),
-			totals: calcResults.returnTotalsObject(domestic,imports)
-		});
+		if (toggle){
+			var itemCollectionView = new ItemCollectionView({collection:itemCollection, 
+				totalPrice: calcResults.calculateTotalPrice(domestic,imports),
+				totalTax: calcResults.calculateTotalTax(domestic,imports),
+				totals: calcResults.returnTotalsObject(domestic,imports)
+			});			
+		}
 	},
 
 	render: function() {

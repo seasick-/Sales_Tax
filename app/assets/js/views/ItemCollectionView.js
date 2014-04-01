@@ -10,15 +10,13 @@ module.exports = Backbone.View.extend({
 	},
 
 	render: function() {
-		// console.log(this.options.totalPrice, this.options.totalTax, this.options.totals);
-		// console.log(this.collection.toJSON());
 
 		var itemCollectionsView1 = template1(this.collection.toJSON());
 		var itemCollectionsView2 = template2({
 			total:this.options.totals.total,
 			tax:this.options.totals.tax
 		});
-		console.log(itemCollectionsView2.el);
+
 		this.$el.html(itemCollectionsView1);
 		this.$('#CollectionView2').replaceWith(itemCollectionsView2);
 
