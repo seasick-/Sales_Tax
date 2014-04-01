@@ -5,7 +5,7 @@ var _ = require('underscore'),
 module.exports = function (){
   'use strict';
 
-	var imports=[];
+    var imports=[];
   
   function addImports(Imports) {
     var InputCopy;
@@ -15,7 +15,7 @@ module.exports = function (){
       }
       else return round5Cents.Round5Cents(price*.15)
     }
-		imports.push(new function() {
+    imports.push(new function() {
       this.description = Imports.description;
       this.price = Imports.price;
       this.type = Imports.type;
@@ -23,7 +23,7 @@ module.exports = function (){
       InputCopy = this;
     });
     // console.log('imports',imports);
-		return InputCopy;
+      return InputCopy;
   }
   
   function getImports() {return imports;}
