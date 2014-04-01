@@ -21,13 +21,8 @@ Acceptance tests need:
 ## Grunt Tasks
 `default`: jshint, test, watch:express  
 `build:dev`: clean:dev, sass:dev, browserify:dev, jshint:all, copy:dev  
-`build:prod`: clean:prod, browserify:prod, jshint:all, copy:prod  
-`test`: jshint, simplemocha:dev  
-`test:acceptance`: express:dev, casper  
+`test`: mochacov:unit, mochacov:coverage, test:acceptance  
+`travis`: mochacov:unit, mochacov:coverage, test:acceptance, mochacov:coveralls  
 `server`: build:dev, express:dev, watch:express
+`test:acceptance`: build:dev, express:dev, casper  
 `mochacov:html`: mac usage: `grunt mochacov:html > doc/coverage.html && open -a Google\ Chrome doc/coverage.html`
-
-## Documentation
-
-Check out the Markdown document in
-[doc/tutorial.md](https://github.com/codefellows/oaa/blob/master/doc/tutorial.md)

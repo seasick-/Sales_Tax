@@ -1,5 +1,4 @@
 'use strict';
-/*global casper*/
 
 casper.test.begin('home page test', 12, function suite(test) {
 

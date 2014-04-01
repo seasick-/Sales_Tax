@@ -1,11 +1,11 @@
 {
-  "name": "oaa",
+  "name": "Sales_Tax",
   "version": "0.0.0",
-  "homepage": "https://github.com/codefellows/oaa",
+  "homepage": "https://github.com/seasick-/Sales_Tax",
   "authors": [
-    "Ivan Storck <ivanoats@gmail.com>"
+    "Jeong Lim <jlim8612@gmail.com>"
   ],
-  "description": "Our Agenda App",
+  "description": "Coding challenge",
   "main": "server.js",
   "license": "MIT",
   "private": true,

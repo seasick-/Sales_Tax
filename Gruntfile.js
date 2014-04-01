@@ -181,7 +181,7 @@ module.exports = function(grunt) {
   grunt.registerTask('travis', ['mochacov:unit', 'mochacov:coverage', 'test:acceptance', 'mochacov:coveralls']);
   grunt.registerTask('server', [ 'env:dev', 'build:dev', 'express:dev', 'watch:express' ]);
   grunt.registerTask('test:acceptance',['build:dev', 'express:dev', 'casper']);
-  grunt.registerTask('default', ['jshint', 'test','watch:express']);
+  grunt.registerTask('default', ['test','watch:express']);
 
   grunt.option('force', true);
 };

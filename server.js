@@ -10,14 +10,14 @@ app.configure(function() {
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.cookieParser());
-  var session_secret = process.env.OAA_SESSION_SECRET || 'CHANGEMECHANGEMECHANGEMECHANGEME';
+  var session_secret = process.env.OAA_SESSION_SECRET || 'ChangeMe';
   app.use(express.session({secret:session_secret}));
   app.use(express.methodOverride());
 });
 
 app.configure('development', function() {
   app.use(express.errorHandler());
-  mongoose.connect('mongodb://localhost/mixology-development');
+  mongoose.connect('mongodb://localhost/development');
 });
 
 var server = http.createServer(app);
