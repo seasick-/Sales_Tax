@@ -12,6 +12,8 @@ From project directory...
 2. `bower install`  
 3. `grunt test`  
 
+'Use grunt server task to run application @ localhost:3000'
+
 ### Acceptance Tests
 Acceptance tests need:
 
@@ -27,7 +29,7 @@ Acceptance tests need:
 
 `travis`: mochacov:unit, mochacov:coverage, test:acceptance, mochacov:coveralls
 
-`server`: build:dev, express:dev, watch:express (Use this task to run application @ localhost:3000)
+`server`: build:dev, express:dev, watch:express 
 
 `test:acceptance`: build:dev, express:dev, casper
 
