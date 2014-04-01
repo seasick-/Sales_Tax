@@ -19,10 +19,10 @@ Acceptance tests need:
 `npm install -g phantomjs casperjs` is the preferred method for installation.
 
 ## Grunt Tasks
-`default`: jshint, test, watch:express  
-`build:dev`: clean:dev, sass:dev, browserify:dev, jshint:all, copy:dev  
-`test`: mochacov:unit, mochacov:coverage, test:acceptance  
-`travis`: mochacov:unit, mochacov:coverage, test:acceptance, mochacov:coveralls  
+`default`: test, watch:express
+`build:dev`: clean:dev, browserify:dev, copy:dev
+`test`: mochacov:unit, mochacov:coverage, test:acceptance
+`travis`: mochacov:unit, mochacov:coverage, test:acceptance, mochacov:coveralls
 `server`: build:dev, express:dev, watch:express
 `test:acceptance`: build:dev, express:dev, casper  
 `mochacov:html`: mac usage: `grunt mochacov:html > doc/coverage.html && open -a Google\ Chrome doc/coverage.html`
