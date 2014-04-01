@@ -27,7 +27,7 @@ Acceptance tests need:
 
 `travis`: mochacov:unit, mochacov:coverage, test:acceptance, mochacov:coveralls
 
-`server`: build:dev, express:dev, watch:express
+`server`: build:dev, express:dev, watch:express (Use this task to run application @ localhost:3000)
 
 `test:acceptance`: build:dev, express:dev, casper
 
