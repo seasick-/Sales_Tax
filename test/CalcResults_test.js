@@ -59,7 +59,6 @@ describe('Add Domestics, calculate totals', function() {
   });
 
   it ('should be able to take both collections and return an object of totals', function() {
-    console.log(domestics.getDomestics());
     expect(calcResults.returnTotalsObject(domestics,imports)['subtotal']).to.be.eql(28.330000000000002);
     expect(calcResults.returnTotalsObject(domestics,imports)['tax']).to.be.eql(1.5);
     expect(calcResults.returnTotalsObject(domestics,imports)['total']).to.be.eql(29.830000000000002);
@@ -106,7 +105,6 @@ describe('Add imports, calculate totals', function() {
   });
 
   it ('should be able to take both collections and return an object of totals', function() {
-    console.log(imports.getImports());
     expect(calcResults.returnTotalsObject(domestics,imports)['subtotal']).to.be.eql(57.5);
     expect(calcResults.returnTotalsObject(domestics,imports)['tax']).to.be.eql(7.65);
     expect(calcResults.returnTotalsObject(domestics,imports)['total']).to.be.eql(65.15);
@@ -172,8 +170,6 @@ describe('Add domestics & imports, calculate totals', function() {
   });
 
   it ('should be able to take both collections and return an object of totals', function() {
-    console.log(domestics.getDomestics());
-    console.log(imports.getImports());
     expect(calcResults.returnTotalsObject(domestics,imports)['subtotal']).to.be.eql(67.97999999999999);
     expect(calcResults.returnTotalsObject(domestics,imports)['tax']).to.be.eql(6.65);
     expect(calcResults.returnTotalsObject(domestics,imports)['total']).to.be.eql(74.63);

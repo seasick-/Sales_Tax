@@ -4,17 +4,12 @@ process.env.PHANTOMJS_EXECUTABLE = process.env.PHANTOMJS_EXECUTABLE || '/usr/loc
 
 module.exports = function(grunt) {
 
-  grunt.loadNpmTasks('grunt-simple-mocha');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-express-server');
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-casper');
-  grunt.loadNpmTasks('grunt-sass');
-  grunt.loadNpmTasks('grunt-mongoimport');
-  grunt.loadNpmTasks('grunt-notify');
   grunt.loadNpmTasks('grunt-env');
   grunt.loadNpmTasks('grunt-mongo-drop');
   grunt.loadNpmTasks('grunt-mocha-cov');
