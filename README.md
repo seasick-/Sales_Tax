@@ -3,10 +3,8 @@ Sales_Tax
 
 Coding challenge
 
-[![Dependency Status](https://gemnasium.com/codefellows/oaa.png)](https://gemnasium.com/codefellows/oaa)
-[![Code Climate](https://codeclimate.com/github/codefellows/oaa.png)](https://codeclimate.com/github/codefellows/oaa)
-[![Build Status](https://travis-ci.org/codefellows/oaa.png?branch=master)](https://travis-ci.org/codefellows/oaa)
-[![Coverage Status](https://coveralls.io/repos/codefellows/oaa/badge.png)](https://coveralls.io/r/codefellows/oaa)
+[![Build Status](https://travis-ci.org/seasick-/Sales_Tax.svg?branch=master)](https://travis-ci.org/seasick-/Sales_Tax)
+[![Coverage Status](http://coveralls.io/repos/seasick-/Sales_Tax/badge.png?branch=master)](http://coveralls.io/r/seasick-/Sales_Tax?branch=master)
 
 ## Installation
 From project directory...  
