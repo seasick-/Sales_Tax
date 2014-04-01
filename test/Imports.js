@@ -29,11 +29,11 @@ module.exports = function (){
   function getImports() {return imports;}
 
 	function getTotalTax() {
-		var total=0;
-		for (var each in imports){
-			total+=imports[each].tax;
-		}
-		return total;
+	  var total=0;
+	  for (var each in imports){
+	    total+=imports[each].tax;
+	  }
+	  return total;
 	}
 
   return {
