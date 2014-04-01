@@ -53,11 +53,10 @@
   "config": {
     "blanket": {
       "pattern": [
-        "api"
+        "test"
       ],
       "data-cover-never": [
-        "node_modules",
-        "test"
+        "node_modules"
       ]
     }
   }
