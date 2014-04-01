@@ -24,5 +24,5 @@ Acceptance tests need:
 `test`: mochacov:unit, mochacov:coverage, test:acceptance
 `travis`: mochacov:unit, mochacov:coverage, test:acceptance, mochacov:coveralls
 `server`: build:dev, express:dev, watch:express
-`test:acceptance`: build:dev, express:dev, casper  
+`test:acceptance`: build:dev, express:dev, casper
 `mochacov:html`: mac usage: `grunt mochacov:html > doc/coverage.html && open -a Google\ Chrome doc/coverage.html`
