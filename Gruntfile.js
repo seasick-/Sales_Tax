@@ -184,7 +184,8 @@ module.exports = function(grunt) {
       },
       test: {
         files: ['test/**/*'],
-        tasks:['mochacov:unit']
+        // tasks:['mochacov:unit'] ///original line
+        tasks:['test:acceptance']
       },
       express: {
         files:  [ 'server.js','api/**/*','app/assets/**/*','app/*.js' ],
@@ -261,7 +262,8 @@ module.exports = function(grunt) {
   grunt.registerTask('build:prod', ['clean:prod', 'browserify:prod', 'jshint:all', 'copy:prod']);
   grunt.registerTask('test:prepare', ['mongo_drop', 'mongoimport']);
   grunt.registerTask('test', ['env:test', 'mochacov:unit','mochacov:coverage']);
-  grunt.registerTask('test1', ['env:test', 'mochacov:unit','watch:test']);
+  grunt.registerTask('test1', ['env:test', 'mochacov:unit', 'mochacov:coverage', 'watch:test']);
+  grunt.registerTask('test2', ['env:test', 'mochacov:unit', 'watch:test']);
   grunt.registerTask('travis', ['mochacov:unit', 'mochacov:coverage', 'mochacov:coveralls']);
   grunt.registerTask('server', [ 'env:dev', 'build:dev', 'express:dev', 'watch:express', 'notify' ]);
   grunt.registerTask('test:acceptance',['build:dev', 'express:dev', 'casper']);

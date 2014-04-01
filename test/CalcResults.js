@@ -10,7 +10,7 @@ module.exports = function (){
   function calculateTotalPrice(domestics,imports){
     var temp1=0;
     var temp2=0;
-    
+
     for (var each in domestics.getDomestics()){
         temp1+=Number(domestics.getDomestics()[each].price);
     }
@@ -23,7 +23,7 @@ module.exports = function (){
   function calculateTotalTax(domestics, imports){
     if (domestics === null || domestics === undefined ||
       imports === null || imports ===undefined){
-      return 'error'
+      return false
     }
     else {
       return Number(domestics.getTotalTax()) + Number(imports.getTotalTax());

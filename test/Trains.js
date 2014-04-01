@@ -107,7 +107,7 @@ module.exports = function (){
     for (var each in result){
       out.push(computeLength(result[each]));
     }
-    return (Math.min.apply(Math,out));
+    return Math.min.apply(Math,out);
   }
 
   function shortestB_to_B () {
