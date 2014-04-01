@@ -12,7 +12,7 @@ From project directory...
 2. `bower install`  
 3. `grunt test`  
 
-'Use grunt server task to run application @ localhost:3000'
+Use grunt server task to run application @ localhost:3000
 
 ### Acceptance Tests
 Acceptance tests need:
